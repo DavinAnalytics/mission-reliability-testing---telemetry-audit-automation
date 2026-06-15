@@ -6,6 +6,12 @@
 
 ---
 
+## Dashboard Preview
+
+![Fleet Telemetry Triage Dashboard](screenshots/dashboard.png)
+
+---
+
 ## Why clean dashboards fail rugged robots
 
 Most data analytics portfolios are built for the cloud, tracking clean consumer transactions, e-commerce clicks, or predictable SaaS metrics.
@@ -94,7 +100,7 @@ conda create -n uav-env python=3.11 -y
 conda activate uav-env
 
 # 3. Install core dependencies
-pip install pandas duckdb pyarrow streamlit
+pip install -r requirements.txt
 
 # 4. Run the data pipeline to generate sanitized output
 python build_telemetry_rules.py

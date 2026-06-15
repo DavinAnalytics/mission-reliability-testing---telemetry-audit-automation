@@ -90,6 +90,7 @@ with st.sidebar:
     if st.button("Commit Triage Actions to Fleet Log", use_container_width=True):
         st.success("Triage Status Successfully Dispatched!")
         st.info(f"**Priority:** {ticket_priority}\n\n**Ops Status:** {'Reviewed' if ops_reviewed else 'Pending'}\n\n**Notes:** {tech_notes}")
+    st.caption("Demo mode: triage actions are displayed above but not persisted.")
 
     st.markdown("---")
     
