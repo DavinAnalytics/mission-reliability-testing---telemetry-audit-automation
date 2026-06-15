@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field AI Portfolio Artifact — Flight Telemetry Audit Case Study</title>
+    <style>
+        :root {
+            --bg-color: #0e1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent-blue: #58a6ff;
+            --accent-red: #ff7b72;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1, h2 { color: white; }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* --- PHYSICS VISUALIZATION ANIMATIONS --- */
+        .simulation-box {
+            height: 120px;
+            background: #010409;
+            border-radius: 4px;
+            margin-top: 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .uav-model {
+            width: 60px;
+            height: 10px;
+            background: var(--accent-blue);
+            border-radius: 5px;
+            position: relative;
+        }
+        /* Simulation 1: Attitude Control Drift */
+        .drift-uav {
+            animation: driftAngle 3s infinite ease-in-out;
+        }
+        @keyframes driftAngle {
+            0%, 100% { transform: rotate(0deg); background: var(--accent-blue); }
+            50% { transform: rotate(25deg); background: var(--accent-red); }
+        }
+        /* Simulation 2: High-Frequency Kinetic Shock */
+        .shock-uav {
+            animation: shakeImpact 1.5s infinite linear;
+        }
+        @keyframes shakeImpact {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            10%, 30%, 50% { transform: translateY(-4px) rotate(-2deg); }
+            20%, 40%, 60% { transform: translateY(4px) rotate(2deg); }
+            70% { transform: translateY(0) scaleY(0.6); background: var(--accent-red); }
+            80% { transform: translateY(0) scaleY(1); background: var(--accent-blue); }
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #238636;
+            color: white;
+            padding: 12px 24px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .cta-btn:hover { background-color: #2ea44f; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛸 Mission Reliability Testing & Telemetry Audit Automation</h1>
+        <p><strong>Candidate: Davin Jongwon Kim</strong> | Target Role: Field Data Analyst</p>
+        <p>This case study documents the deployment of an in-memory transformation pipeline designed to ingest messy, high-frequency autonomous drone sensor logs, sanitize structural timing anomalies, and expose critical hardware failure signatures to Field Operations teams.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>1. Attitude Control Drift Failure</h3>
+                <p>Occurs when actual sensor tracking orientation systematically deviates from the commanded flight path. Flagged when <code>ErrRP</code> consistently exceeds baseline limits.</p>
+                <div class="simulation-box">
+                    <div class="uav-model drift-uav"></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>2. Critical Oscillation & Structural Shock</h3>
+                <p>High-frequency vibrations or severe landing impacts isolated via Euclidean 3D Vector Magnitudes. Spikes in <code>total_kinetic_shock_g</code> pinpoint structural risk events.</p>
+                <div class="simulation-box">
+                    <div class="uav-model shock-uav"></div>
+                </div>
+            </div>
+        </div>
+
+        <h2>🛠️ Core Architectural Pipeline Metrics</h2>
+        <ul>
+            <li><strong>Total Ingested Log Frequency:</strong> 12,253 Telemetry Ticks (~20Hz Base Sample Frequency)</li>
+            <li><strong>Sanitization Layer Output:</strong> 8,167 Validated Physical Records (Time-gaps and duplicates dropped)</li>
+            <li><strong>In-Memory Processing Speed:</strong> Sub-millisecond execution engine powered by DuckDB</li>
+        </ul>
+
+        <a href="http://localhost:8501" target="_blank" class="cta-btn">🚀 Launch Live Triage Diagnostics Utility</a>
+    </div>
+</body>
+</html>

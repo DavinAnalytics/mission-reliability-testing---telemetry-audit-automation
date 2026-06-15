@@ -76,9 +76,17 @@ with col1:
 
 with col2:
     st.subheader("Kinematic Mission Timeline")
-    # Plotting physical vector variations and errors over time
-    chart_data = flight_df[['timestamp', 'total_kinetic_shock_g', 'ErrRP']].set_index('timestamp')
-    st.line_chart(chart_data)
+    
+    # Create two sub-columns within the chart area to give each metric its own scale
+    chart_col1, chart_col2 = st.columns(2)
+    
+    with chart_col1:
+        st.caption("💥 Peak Mechanical Shock (Independent G-Scale)")
+        st.line_chart(flight_df.set_index('timestamp')['total_kinetic_shock_g'], color="#58a6ff")
+        
+    with chart_col2:
+        st.caption("🎯 Attitude Control Tracking Error (Independent Error-Scale)")
+        st.line_chart(flight_df.set_index('timestamp')['ErrRP'], color="#ff7b72")
 
 st.markdown("---")
 st.subheader("Detailed Human-Scale Telemetry Log")
