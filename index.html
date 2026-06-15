@@ -76,17 +76,24 @@
         }
         .github-btn {
             display: flex; align-items: center; justify-content: center;
-            width: 30px; height: 30px;
-            border: 1px solid var(--border);
+            gap: 8px;
+            padding: 0 14px;
+            height: 36px;
+            border: 1px solid var(--accent);
             border-radius: 5px;
-            background: var(--surface2);
-            color: var(--text);
+            background: var(--accent-dim);
+            color: var(--accent);
             text-decoration: none;
-            transition: border-color 0.15s, color 0.15s, background 0.15s;
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
             flex-shrink: 0;
         }
-        .github-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
-        .github-btn svg { width: 16px; height: 16px; fill: currentColor; }
+        .github-btn:hover { background: rgba(56,189,248,0.18); color: #fff; border-color: #7dd3fa; }
+        .github-btn svg { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
 
         /* ---- LAYOUT ---- */
         .main { max-width: 1200px; margin: 0 auto; padding: 24px 28px; }
@@ -441,6 +448,7 @@
                      1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
                      1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
         </svg>
+        VIEW ON GITHUB
     </a>
 </header>
 
@@ -493,7 +501,7 @@
             <div class="kpi">
                 <div class="kpi-label">Validated Records</div>
                 <div class="kpi-value" style="color:var(--accent);">8,167</div>
-                <div class="kpi-unit">66.6% retention rate</div>
+                <div class="kpi-unit">66.7% retention rate</div>
             </div>
             <div class="kpi">
                 <div class="kpi-label">Anomalous Windows</div>
@@ -730,7 +738,7 @@
             <div class="a-metric">
                 <div class="a-label">Rows Removed</div>
                 <div class="a-value" style="color:var(--danger);">4,086</div>
-                <div class="a-sub">33.4% of raw input &mdash; duplicates + bench gap</div>
+                <div class="a-sub">33.3% of raw input &mdash; duplicates + bench gap</div>
             </div>
         </div>
 

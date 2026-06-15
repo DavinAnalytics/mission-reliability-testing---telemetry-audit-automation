@@ -54,7 +54,7 @@ Computing the 3D Euclidean vector magnitude ($\|v\| = \sqrt{x^2 + y^2 + z^2}$) r
 
 Standard single-axis charts break down when plotted variables differ by orders of magnitude. Peak mechanical shock reaches **89.42 Gs**; tracking errors range between `0.0` and `0.43`. On a shared axis, the error line flattens to an unreadable baseline.
 
-The operations interface splits these into independent layout columns with separate vertical scales. This makes the correlation visible: the structural trauma spike and the tracking error explosion occur at the same millisecond.
+The operations interface stacks these into two vertically aligned panels with independent vertical scales. This makes the correlation visible: the structural trauma spike and the tracking error explosion occur at the same millisecond.
 
 ---
 
@@ -64,11 +64,19 @@ The frontend targets two different users with separate tools.
 
 ### Operations tool (Streamlit)
 
-An interactive utility for support and dispatch teams working an active maintenance ticket. The sidebar displays a real-time anomaly count, a priority selector (`High`, `Medium`, `Low`), a "Mark as Reviewed" toggle, and a technician notes field. The main view groups raw high-frequency data into 1-second buckets, averaging tracking errors to observe systematic drift while preserving maximum acceleration force so impact spikes are never averaged out.
+An interactive triage utility for support and dispatch teams working an active maintenance ticket. The sidebar shows a real-time anomaly count that updates with each filter change, a priority selector (High, Medium, Low), a reviewed checkbox, and a technician notes field. A fault class filter lets operators isolate specific failure modes, trimming the dataset to the windows they actually need to review.
+
+The main panel has three KPI tiles (average ErrRP, peak impact force, anomalous flight leg count), a kinematic timeline with independent vertical scales for kinetic shock and attitude tracking error stacked in two panels, a sensor statistics table grouped by fault class, and bar charts comparing average RP error and peak shock across fault categories.
+
+The app groups tracking data into 1-second buckets before rendering any visualization. Tracking error uses the bucket mean to surface sustained drift. Peak shock uses the bucket max so no impact event gets averaged away.
 
 ### Executive summary (GitHub Pages)
 
-A single-page artifact for engineering managers and stakeholders who need to review vehicle flight health without running a local environment. It includes CSS keyframe animations showing vehicle pitch/roll drift and high-frequency structural vibration, with a button linking to the Streamlit dashboard.
+The HTML file is an executive briefing, not a second dashboard. It documents the full data lineage from raw ingestion to validated output: 12,253 raw ticks in, 4,086 duplicates and bench-period frames removed, 8,167 validated records out.
+
+The 1-second downsampling runs in Streamlit, not here. That separation is the point. The static layer locks in absolute raw counts that don't change when you filter or interact with the UI. The 189 anomalous seconds operators see in Streamlit come from downsampling those 3,790 anomalous raw ticks. The HTML gives you the source number, so anyone auditing the pipeline can check the math without running anything.
+
+The briefing covers four sections. The overview tab shows a pipeline throughput flow, four KPI tiles, and a fault distribution table with exact record counts for all five operational states. The mission timeline tab renders a Chart.js dual-axis chart of peak kinetic shock and attitude tracking error across the full flight, with annotated windows per fault mode. The fault analysis tab has one card per fault class with record counts, average ErrRP, peak shock, and a physical interpretation of what the sensor signature means. The pipeline audit tab shows the actual DuckDB SQL for the temporal sanitization, the feature engineering formula for the 3D shock vector, and a benchmark: end-to-end execution in under 1 ms on 12,253 records.
 
 ---
 
