@@ -76,7 +76,6 @@ A single-page web artifact designed for engineering managers and stakeholders wh
 
 To run the pipeline and dashboard locally, execute these commands in PowerShell in order:
 
-```
 powershell
 # 1. Clone the repository
 git clone [https://github.com/DavinAnalytics/uav-telemetry-pipeline.git](https://github.com/DavinAnalytics/uav-telemetry-pipeline.git)
