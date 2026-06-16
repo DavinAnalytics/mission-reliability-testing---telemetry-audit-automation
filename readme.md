@@ -2,7 +2,8 @@
 
 **Author:** Davin Kim  
 **Core Infrastructure:** DuckDB (SQL) · Python (pandas) · Conda · PowerShell  
-**Frontend Stack:** Streamlit (Operations UI) · HTML5/CSS3/JS (GitHub Pages Executive Briefing)
+**Frontend Stack:** Streamlit (Operations UI) · HTML5/CSS3/JS (GitHub Pages Executive Briefing)  
+**Data Source:** [TLM-UAV Anomaly Detection Datasets — Kaggle](https://www.kaggle.com/datasets/luyucwnu/tlmuav-anomaly-detection-datasets/data)
 
 ---
 
