@@ -96,10 +96,17 @@ with st.sidebar:
     
     st.multiselect("Active Fault Class Filter", fault_options, key="selected_faults")
     
-    st.link_button(
-        "View Source Code on GitHub",
-        "https://github.com/DavinAnalytics/uav-telemetry-audit-pipeline",
-    )
+    with st.container(horizontal=True):
+        st.link_button(
+            "GitHub",
+            "https://github.com/DavinAnalytics/uav-telemetry-audit-pipeline",
+            icon=":material/code:",
+        )
+        st.link_button(
+            "Live App",
+            "https://davinanalytics.github.io/uav-telemetry-audit-pipeline/",
+            icon=":material/open_in_new:",
+        )
 
 
 # ==============================================================================
