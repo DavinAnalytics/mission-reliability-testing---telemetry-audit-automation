@@ -96,7 +96,17 @@ with st.sidebar:
     
     st.multiselect("Active Fault Class Filter", fault_options, key="selected_faults")
     
-    with st.container(horizontal=True):
+
+
+# ==============================================================================
+# PHASE 3: MAIN ANALYTICAL APPLICATION DISPLAY LAYER
+# ==============================================================================
+header_col, btn_col = st.columns([3, 1])
+with header_col:
+    st.title("🛸 UAV Mission Reliability Testing & Telemetry Audit")
+    st.caption("AI Service Organization — High-Frequency Sensor Stream Triage Utility")
+with btn_col:
+    with st.container(horizontal=True, horizontal_alignment="right"):
         st.link_button(
             "GitHub",
             "https://github.com/DavinAnalytics/uav-telemetry-audit-pipeline",
@@ -107,13 +117,6 @@ with st.sidebar:
             "https://davinanalytics.github.io/uav-telemetry-audit-pipeline/",
             icon=":material/open_in_new:",
         )
-
-
-# ==============================================================================
-# PHASE 3: MAIN ANALYTICAL APPLICATION DISPLAY LAYER
-# ==============================================================================
-st.title("🛸 UAV Mission Reliability Testing & Telemetry Audit")
-st.caption("AI Service Organization — High-Frequency Sensor Stream Triage Utility")
 
 if filtered.empty:
     st.warning("No fault classes selected. Adjust the sidebar filter options to load views.")
